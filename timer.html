@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie ie7"> <![endif]--> 
+<!--[if IE 8 ]>    <html lang="en" class="ie ie8"> <![endif]--> 
+<!--[if IE 9 ]>    <html lang="en" class="ie ie9"> <![endif]--> 
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    
+    <meta charset="UTF-8" />
+    <title>Timer</title>
+    <meta name="description" content=" " />
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+ 
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon-precomposed.png" /> 
+    <link rel="author" type="text/plain" href="humans.txt">  
+    <!-- / meta -->
+
+
+</head>
+
+<body id="body">
+
+    <h1 id="timer">5:00</h1>
+
+    <script>
+
+        var $timer = document.getElementById('timer');
+        var $body = document.getElementById('body')
+        var minutes = 5;
+        var seconds = 00;
+        
+        var updateClasses = function() {
+            if ( minutes < 1 ) {
+
+                if ( seconds == 59 ) {
+                    $body.className = "minute-left"
+                } else if ( seconds == 30 ) {
+                    $body.className = "seconds-left"
+                }
+            }
+        }
+        var updateDisplay = function() {
+            $timer.innerText = minutes + ":" + ( ( seconds < 10 ) ? "0" + seconds : seconds );
+        };
+        var stopTimer = function() {
+            if ( minutes == 0 && seconds == 0 ) {
+                clearInterval( timer );
+            }
+        }
+        var countdown = function() {
+
+            // New minute
+            // e.g: 5:00 to 4:59
+            if ( seconds == 00 ) {
+                
+                minutes -= 1;
+                seconds = 59;
+            
+            // Same minute
+            // e.g: 4:59 to 4:58
+            } else {
+
+                seconds -= 1;
+
+            }
+
+            updateDisplay();
+            updateClasses();
+            stopTimer();
+
+        }
+       
+        var timer = setInterval( countdown, 1000 );
+
+    </script>
+
+    <style type="text/css">
+        body                { background:#000; color:#fff; }
+        body.minute-left    { background:#ffc97d; }
+        body.seconds-left   { background:#fc4a50; }
+
+        h1          { text-align: center; font-size:320px; line-height:1; margin:200px 0 0 0; padding:0;}
+
+    </style>
+
+</body>
+</html>
