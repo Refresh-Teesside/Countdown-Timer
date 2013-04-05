@@ -21,22 +21,34 @@
 
 <body id="body">
 
+<audio>
+    <source src="audio/buzzer_3.mp3"></source>
+</audio>
+<audio>
+    <source src="audio/alarm_1.mp3"></source>
+</audio>
+
     <h1 id="timer">5:00</h1>
 
     <script>
 
         var $timer = document.getElementById('timer');
-        var $body = document.getElementById('body')
+        var $body = document.getElementById('body');
         var minutes = 5;
-        var seconds = 00;
+        var seconds = 0;
+        var audio_warning = document.getElementsByTagName("audio")[0];
+        var audio_alarm = document.getElementsByTagName("audio")[1];
+
+        console.log(audio_alarm);
         
         var updateClasses = function() {
             if ( minutes < 1 ) {
 
                 if ( seconds == 59 ) {
-                    $body.className = "minute-left"
+                    $body.className = "minute-left";
                 } else if ( seconds == 30 ) {
-                    $body.className = "seconds-left"
+                    $body.className = "seconds-left";
+                    audio_warning.play();
                 }
             }
         }
@@ -46,6 +58,7 @@
         var stopTimer = function() {
             if ( minutes == 0 && seconds == 0 ) {
                 clearInterval( timer );
+                audio_alarm.play();
             }
         }
         var countdown = function() {
