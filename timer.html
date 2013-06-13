@@ -28,7 +28,10 @@
     <source src="audio/alarm_1.mp3"></source>
 </audio>
 
+
+    <section id="fullscreen">
     <h1 id="timer">5:00</h1>
+    </section>
 
     <script>
 
@@ -88,12 +91,115 @@
 
     </script>
 
+
+    <script>
+        var e = document.getElementById("fullscreen");
+
+        e.onclick = function() {
+
+            if (RunPrefixMethod(document, "FullScreen") || RunPrefixMethod(document, "IsFullScreen")) {
+                RunPrefixMethod(document, "CancelFullScreen");
+            }
+            else {
+                RunPrefixMethod(e, "RequestFullScreen");
+            }
+
+        }
+
+        var pfx = ["webkit", "moz", "ms", "o", ""];
+        function RunPrefixMethod(obj, method) {
+
+            var p = 0, m, t;
+            while (p < pfx.length && !obj[m]) {
+                m = method;
+                if (pfx[p] == "") {
+                    m = m.substr(0,1).toLowerCase() + m.substr(1);
+                }
+                m = pfx[p] + m;
+                t = typeof obj[m];
+                if (t != "undefined") {
+                    pfx = [pfx[p]];
+                    return (t == "function" ? obj[m]() : obj[m]);
+                }
+                p++;
+            }
+
+        }
+
+    </script>
+
     <style type="text/css">
         body                { background:#000; color:#fff; }
         body.minute-left    { background:#ffc97d; }
         body.seconds-left   { background:#fc4a50; }
 
         h1          { text-align: center; font-size:660px; line-height:1; margin:200px 0 0 0; padding:0;}
+
+
+
+
+
+        section:-webkit-full-screen
+         {
+             float: none;
+             width: 100%;
+             height: 100%;
+             padding: 0;
+             margin: 0;
+             border: 0 none;
+             background-color: #000;
+         }
+
+        body.minute-left section:-webkit-full-screen
+        {
+            background-color: #ffc97d;
+        }
+
+        body.seconds-left section:-webkit-full-screen
+        {
+            background-color: #fc4a50;
+        }
+
+        section:-moz-full-screen
+        {
+            float: none;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            border: 0 none;
+        }
+
+        section:-ms-full-screen
+        {
+            float: none;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            border: 0 none;
+        }
+
+        section:-o-full-screen
+        {
+            float: none;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            border: 0 none;
+        }
+
+        section:full-screen
+        {
+            float: none;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            border: 0 none;
+        }
+
 
     </style>
 
