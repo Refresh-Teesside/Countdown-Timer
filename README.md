@@ -9,6 +9,10 @@ A simple website countdown timer for events.
 * When the timer hits 0 there is a long buzzer
 * You can click the page to make it full screen
 
-![Example](https://github.com/Refresh-Teesside/Eventbrite-Name-Badges/blob/master/assets/examples/namebadges.jpg?raw=true)
+![Example](https://github.com/Refresh-Teesside/Countdown-Timer/blob/master/assets/img/example/screen_one.png?raw=true)
+
+![Example](https://github.com/Refresh-Teesside/Countdown-Timer/blob/master/assets/img/example/screen_one.png?raw=true)
+
+![Example](https://github.com/Refresh-Teesside/Countdown-Timer/blob/master/assets/img/example/screen_one.png?raw=true)
 
 Thanks to Richard Powell for his help on this one https://github.com/byrichardpowell
